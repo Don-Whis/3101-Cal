@@ -17,6 +17,7 @@ public sealed class AvailabilityStepDefinition
     private Calculator _calculator;
     //context injection, there isn't any [given] step
     //test
+    //CI test
     public AvailabilityStepDefinition(Calculator calc)
     {
         this._calculator = calc;
