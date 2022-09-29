@@ -22,8 +22,8 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: NUnit Tests
-      working-directory: ICT3103_Calculator.UnitTests/
+      working-directory: ICT3103_Calculator.UnitTests.csproj\
       run: dotnet test --no-build --verbosity normal
     - name: SpecFLow Tests
-      working-directory: SpecFlowCalculatorTests/
+      working-directory: SpecFlowCalculatorTests\
       run: dotnet test --no-build --verbosity normal
