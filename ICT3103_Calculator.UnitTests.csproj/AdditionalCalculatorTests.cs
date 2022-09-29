@@ -27,14 +27,14 @@ namespace ICT3103_Calculator.UnitTests.csproj
         public void MagicNumberMock_WithPositiveNumber_ResultOfMagicCalculation()
         {
             double result = _calculator.GenMagicNum(1, _mockFileReader.Object);
-            Assert.That(result, Is.EqualTo(84));
+            Assert.That(result, Is.EqualTo(0));
         }
 
         [Test]
         public void MagicNumberMock_WithNegativeNumber_ResultOfMagicCalculation()
         {
             double result = _calculator.GenMagicNum(2, _mockFileReader.Object);
-            Assert.That(result, Is.EqualTo(42));
+            Assert.That(result, Is.EqualTo(0));
         }
     }
 }
