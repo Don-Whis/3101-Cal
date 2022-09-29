@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 namespace ICT3101_Calculator 
 {
     public class Calculator
@@ -35,7 +37,28 @@ namespace ICT3101_Calculator
             }
             return result;
         }
-
+        public class FileReader : IFileReader
+        {
+            public string[] Read(string path)
+            {
+                return File.ReadAllLines(path);
+            }
+        }
+        public double GenMagicNum(double input, IFileReader fileReader)
+        {
+            double result = 0;
+            int choice = Convert.ToInt16(input);
+            //Dependency------------------------------
+            //FileReader getTheMagic = new FileReader();
+            //----------------------------------------
+            string[] magicStrings = fileReader.Read("MagicNumbers.txt");
+            if ((choice >= 0) && (choice < magicStrings.Length))
+            {
+                result = Convert.ToDouble(magicStrings[choice]);
+            }
+            result = (result > 0) ? (2 * result) : (-2 * result);
+            return result;
+        }
         public double MBTF(double mttf, double mttr)
         {
             if (mttf < 0 || mttr < 0)

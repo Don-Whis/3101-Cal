@@ -1,13 +1,17 @@
+using static ICT3101_Calculator.Calculator;
+
 namespace ICT3101_Calculator
 {
 public class CalculatorTests
 {
     private Calculator _calculator;
+    private IFileReader _fileReader;
     [SetUp]
     public void Setup() //setup method is being called before any test executes
     {
         // Arrange = create the object
         _calculator = new Calculator();
+        _fileReader = new FileReader();
     }
 
     [Test] 
@@ -73,21 +77,31 @@ public class CalculatorTests
         double result = _calculator.CalculateAreaOfTriangle(4, 5);
         // Assert (return true or false) 
         Assert.That(result, Is.EqualTo(10));
-    }
-    // [Test]
-    // public void AreaOfCircle_WhenCalculateArea_ResultEqualToArea()
-    // {
-    //     // Act = call the object to do smth
-    //     double result = _calculator.CalculateAreaOfCircle(5);
-    //     // Assert (return true or false) 
-    //     Assert.That(result, Is.EqualTo(75));
-    // }
+        }
+        // [Test]
+        // public void AreaOfCircle_WhenCalculateArea_ResultEqualToArea()
+        // {
+        //     // Act = call the object to do smth
+        //     double result = _calculator.CalculateAreaOfCircle(5);
+        //     // Assert (return true or false) 
+        //     Assert.That(result, Is.EqualTo(75));
+        // }
 
-    [Test]
-    public void AreaOfCircle_WhenCalculateArea_ResultEqualFailure()
-    {
-        Assert.That(() => _calculator.CalculateAreaOfCircle(-2),Throws.ArgumentException);
-    }
+        [Test]
+        public void AreaOfCircle_WhenCalculateArea_ResultEqualFailure()
+        {
+            Assert.That(() => _calculator.CalculateAreaOfCircle(-2), Throws.ArgumentException);
+        }
 
-}
+        [Test]
+        public void MagicNumber_WhenCalculation_ResultOfMagicCalculation()
+        {
+            double result = _calculator.GenMagicNum(2,_fileReader);
+            // Assert (return true or false) 
+            Assert.That(result, Is.EqualTo(64));
+        }
+
+
+
+    }
 }
