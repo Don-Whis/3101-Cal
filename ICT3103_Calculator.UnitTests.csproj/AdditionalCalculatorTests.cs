@@ -19,7 +19,7 @@ namespace ICT3103_Calculator.UnitTests.csproj
         {
             _mockFileReader = new Mock<IFileReader>();
             _mockFileReader.Setup(fr =>
-            fr.Read("@MagicNumbers.txt")).Returns(new string[3] { "42", "42","-21" });
+            fr.Read("MagicNumbers.txt")).Returns(new string[3] { "42", "21","33" });
             _calculator = new Calculator();
         }
 
@@ -27,14 +27,15 @@ namespace ICT3103_Calculator.UnitTests.csproj
         public void MagicNumberMock_WithPositiveNumber_ResultOfMagicCalculation()
         {
             double result = _calculator.GenMagicNum(1, _mockFileReader.Object);
-            Assert.That(result, Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(42));
         }
 
         [Test]
         public void MagicNumberMock_WithNegativeNumber_ResultOfMagicCalculation()
         {
+            Console.Write(_mockFileReader.Object);
             double result = _calculator.GenMagicNum(2, _mockFileReader.Object);
-            Assert.That(result, Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(66));
         }
     }
 }
